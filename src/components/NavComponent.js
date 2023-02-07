@@ -2,11 +2,12 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 
 const navBar = [
-    { id: 1, name: "Inicio" },
-    { id: 2, name: "Producto" },
-    { id: 3, name: "Comercio" },
-    { id: 4, name: "Contacto" },
+    { id: 1, name: "Inicio", to:'/'},
+    { id: 2, name: "Producto", to:'/product' },
+
 ]
+//     { id: 3, name: "Comercio", to:'/comerce' },
+// { id: 4, name: "Contacto", to:'/contact' },
 const navLog = [
     { id: 1, name: "Crear cuenta" },
     { id: 2, name: "Iniciar Sesión" },
@@ -45,7 +46,7 @@ const NavComponent = () => {
                     navBar.map((item) => (
                         <ul className="flex md:items-center flex-col p-4 mt-4 md:flex-row md:space-x-14 md:mt-0 md:text-sm md:font-medium" key={item.id}>
                             <li >
-                                <Link to='/about' onClick={handleNav}
+                                <Link to={item.to} onClick={handleNav}
                                     className={`block py-2 pr-4 text-center border-b-4 ${nav ? 'border-b-green-500' : ''} hover:border-b-green-500 pl-3 text-pureBlack font-medium text-lg md:bg-transparent hover:text-green-500  md:p-0`}
                                     aria-current="page">{item.name}</Link>
                             </li>
