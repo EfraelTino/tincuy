@@ -13,10 +13,12 @@ const navLog = [
 ]
 
 const NavComponent = () => {
-    const [isSelected, setIsSelected] = useState(false);
     const [nav, setNav] = useState(false);
     const handleNav = () =>{
         setNav(false)
+    }
+    const log = () =>{
+        alert('Implementacion en proceso')
     }
     return (
         
@@ -54,8 +56,8 @@ const NavComponent = () => {
                     <ul
                         className="flex md:items-center flex-col p-4 mt-4 md:flex-row md:space-x-14 md:mt-0 md:text-sm md:font-medium" key={item.id}>
                         <li >
-                            <a href="#"
-                                className={`block mt-4 md:mt-0 text-pureBlack border-2 focus:ring-blue-300 font-medium ${item.id === 2 ? 'bg-green-500 text-white hover:text-green-500 hover:border-green-500 hover:bg-white' : ''} rounded-lg text-lg  py-3 px-5 text-center md:mr-0`}>{item.name}</a>
+                            <button onClick={log}
+                                className={`block mt-4 md:mt-0 text-pureBlack border-2 focus:ring-blue-300 font-medium ${item.id === 2 ? 'bg-green-500 text-white hover:text-green-500 hover:border-green-500 hover:bg-white' : ''} rounded-lg text-lg  py-3 px-5 text-center md:mr-0`}>{item.name}</button>
                         </li>
                     </ul>
                 ))

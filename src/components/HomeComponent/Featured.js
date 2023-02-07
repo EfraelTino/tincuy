@@ -3,6 +3,7 @@ import wheat from '../../images/wheat.webp'
 import rise from '../../images/rise.webp'
 import pumpkin from '../../images/pumpkin.webp'
 import veg from '../../images/veg.webp'
+import { Link } from 'react-router-dom';
 
 const products = [
     { id: 1, img: wheat, alt: 'wheat', title: 'Trigo', description: 'Nuestro trigo es de alta calidad por siembra orgánica sin fertilizantes químicos. Nuestro trigo es alto en fibra y carbohidratos.' },
@@ -32,7 +33,7 @@ const Destacate = () => {
                 }
             </div>
 
-            <a href='javascript:void(0)' className='mt-16 block text-center font-medium text-xl text-green-500'>Ver todos los productos</a>
+            <Link to='/' className='mt-16 block text-center font-medium text-xl text-green-500'>Ver todos los productos</Link>
         </section>
     );
 }
