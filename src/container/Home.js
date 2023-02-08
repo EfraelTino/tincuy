@@ -4,23 +4,24 @@ import Miles from '../components/HomeComponent/Miles';
 import Partners from '../components/HomeComponent/Partners';
 import PrincipalComponent from '../components/HomeComponent/Seccha';
 import Story from '../components/HomeComponent/Story';
+import useObserver from '../hooks/useObserver';
 
 const Home = () => {
     const [scrollY, setScrollY] = useState(0);
-    useEffect(() => {
-        // console.log('Moviendo el scroll')
-        // console.log(scrollY)
-        const detectarScroll = () => {
-            setScrollY(window.pageYOffset);
-        }
-        window.addEventListener('scroll', detectarScroll);
-        return () =>(window.removeEventListener('scroll', detectarScroll));
-    }, [scrollY]);
 
+    const [observer, setElements, entries] = useObserver({
+        threshold:0.25,
+        root:null,
+    })
+
+    useEffect(() =>{
+        const datos = document.querySelector('.featured');
+        setElements(datos)
+    }, [setElements])
     return (
        <>
        <PrincipalComponent/>
-       <Featured />
+       <Featured className='featured' />
        <Partners />
        <Story />
        <Miles />
