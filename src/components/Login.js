@@ -1,59 +1,33 @@
 import React from 'react'
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { logine, startGoogleAuth } from '../actions';
-import firebase from 'firebase/app';
+import { startGoogleAuth } from '../actions';
 import 'firebase/auth';
 
 const Login = () => {
-	const [email, setEmail] = useState('')
-	const [pass, setPass] = useState('')
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
-	const handelLogin = (e) => {
-		e.preventDefault();
-		firebase.auth().signInWithEmailAndPassword(email, pass)
-			.then(() => {
-				dispatch(logine({ email, pass }));
-				setEmail('');
-				setPass('');
-			navigate ('/register');
-			})
-			.catch((err) => {
-				if (err.code === 'auth/user-not-found') {
-					alert('Usuario o contraseña incorrecta')
-				}
-				if (err.code === 'auth/wrong-password') {
-					alert('Usuario o contraseña incorrecta')
-				}
-				console.log(err.code)
-				console.log(err.message)
-				navigate ('/login')
-			}	
-			);
-
-	}
 	const handleGoogleAuth = () => {
 		dispatch(startGoogleAuth());
-		navigate('/register');
+		navigate('/product');
 	}
 	return (
 		<div>
 			<section className='login'>
 				<section className='login__container'>
 					<h2>Inicia sesión</h2>
-					<form className='login__container--form' onSubmit={handelLogin} >
+					<form className='login__container--form' >
 						<input
-							onChange={e => setEmail(e.target.value)}
+							// onChange={e => setEmail(e.target.value)}
 							name='email'
 							className='input'
 							type='email'
 							placeholder='Correo'
 						/>
 						<input
-						onChange={e => { setPass(e.target.value) }}
+						// onChange={e => { setPass(e.target.value) }}
 						name='password'
 						className='input'
 						type='password'
